@@ -1,0 +1,24 @@
+<view class="container">
+	<view class="my-list">
+		<navigator class="my-item" url="../myconferencelist/myconferencelist">
+			<image src="../../images/icon_24.png" mode="aspectFit"></image>
+			<text>我的课程</text>
+		</navigator>
+		<navigator class="my-item" url="../myconferencelist/myconferencelist">
+			<image src="../../images/icon_26.png" mode="aspectFit"></image>
+			<text>个人信息</text>
+		</navigator>
+		<navigator class="my-item" url="../myconferencelist/myconferencelist">
+			<image src="../../images/icon_28.png" mode="aspectFit"></image>
+			<text>分销中心</text>
+		</navigator>
+		<navigator class="my-item" url="../myconferencelist/myconferencelist">
+			<image src="../../images/icon_30.png" mode="aspectFit"></image>
+			<text>课程收藏</text>
+		</navigator>
+		<navigator class="my-item" url="../myconferencelist/myconferencelist">
+			<image src="../../images/icon_32.png" mode="aspectFit"></image>
+			<text>余额充值</text>
+		</navigator>
+	</view>
+</view>
