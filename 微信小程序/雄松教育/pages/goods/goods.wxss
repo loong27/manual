@@ -15,11 +15,11 @@
 	margin-right: 6rpx;
 }
 .icon-time:before{
-	background: url('../../images/shizhong.png') no-repeat 50% 50% / 100% auto;
+	background: url('http://xiongsongedu.com/images/xcx/shizhong.png') no-repeat 50% 50% / 100% auto;
 }
 .icon-xinxi:before{
-	background: url('../../images/xinxi.png') no-repeat 50% 50% / 100% auto;
+	background: url('http://xiongsongedu.com/images/xcx/xinxi.png') no-repeat 50% 50% / 100% auto;
 }
 .icon-zuobiao:before{
-	background: url('../../images/zuobiao.png') no-repeat 50% 50% / 100% auto;
+	background: url('http://xiongsongedu.com/images/xcx/zuobiao.png') no-repeat 50% 50% / 100% auto;
 }

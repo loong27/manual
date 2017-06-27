@@ -30,6 +30,7 @@ Page({
       ]
     })
   },
+
   fetchConferenceData:function(){  //获取会议室列表
     const perpage = 10;
     this.setData({
@@ -37,6 +38,32 @@ Page({
     })
     const page = this.data.page;
     const newlist = [];
+    //获取服务器数据开始
+    var that = this
+    //调用应用实例的方法获取全局数据  
+    wx.request({
+      url: 'http://www.xiongsongedu.com/app/index.php?i=6&c=entry&m=ewei_shopv2&do=mobile&r=xcx.course&appid=loong&appsecret=kN83v57QGnQGkuhyqlBjCOOYubHo6d',//上线的话必须是https，没有appId的本地请求貌似不受影响  
+      data: { appid: "loong", appsecret: "kN83v57QGnQGkuhyqlBjCOOYubHo6d" },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      header: { 
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.result);
+        const newslists = res.data.result;
+        that.setData({
+          newslists: res.data.result
+        })
+      },
+      fail: function () {
+        // fail  
+      },
+      complete: function () {
+        // complete  
+      }
+    })
+    
+  //获取服务器数据结束
     for (var i = (page-1)*perpage; i < page*perpage; i++) {
       newlist.push({
         "id":i+1,

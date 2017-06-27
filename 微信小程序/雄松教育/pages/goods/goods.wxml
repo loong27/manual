@@ -6,15 +6,15 @@
 	</view>
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="conference-list">
-			<navigator class="conference-item" wx:for="{{activitylist}}" wx:key="{{item.id}}" url="../goodsdetail/goodsdetail?id={{item.id}}">
+			<navigator class="conference-item" wx:for="{{newslists}}" wx:key="{{item.id}}" url="../goodsdetail/goodsdetail?id={{item.id}}">
 				<view class="conference-item-img">
-					<image src="{{item.imgurl}}" mode="aspectFill"></image>
+					<image src="http://www.xiongsongedu.com/attachment/{{item.thumb}}" mode="aspectFill"></image>
 					<text class="hover{{index}}" data-status="{{item.status}}">{{item.status}}</text>
 				</view>
 				<view class="conference-item-text">
-					<view class="conference-item-title">{{item.name}}</view>
+					<view class="conference-item-title">{{item.title}}</view>
 					<view class="conference-item-info activity-item-info">
-						<text class="icon-time">{{item.time}}</text>
+						<text class="icon-time">￥{{item.marketprice}}</text>
 						<text class="icon-xinxi">{{item.coments}}</text>
 					</view>
 					<view class="conference-item-info">
