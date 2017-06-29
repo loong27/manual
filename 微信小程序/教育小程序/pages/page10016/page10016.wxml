@@ -1,0 +1,65 @@
+<view class="app">
+<template name="zcClassify">
+  <view class="element classify {{ 'classify-mode'+data.customFeature.mode }}" style="{{data.style}}">
+    <scroll-view scroll-x="true" data-color="red" data-index="0" data-event-params="{{data.eventParams}}" catchtap="{{data.eventHandler}}">
+      <block wx:for="{{data.content}}" wx:for-index="idx" wx:for-item="itemName">
+        <block wx:if="{{idx==data.customFeature.selected}}">
+          <block wx:if="{{data.customFeature.mode==1}}">
+            <view class="classify-item selected" data-event-params="{{itemName.eventParams}}" catchtap="{{itemName.eventHandler}}" style="color:{{data.customFeature.selectedColor}}"><text>{{itemName.text}}</text><i class="underline" style="border-color:{{data.customFeature.selectedColor}}"></i></view>
+          </block>
+          <block wx:else>
+            <view class="classify-item selected" data-event-params="{{itemName.eventParams}}" catchtap="{{itemName.eventHandler}}" style="color:{{data.customFeature.selectedColor}}"><text style="background-color:{{data.customFeature.selectedColor}}">{{itemName.text}}</text></view>
+          </block>
+        </block>
+        <block wx:else>
+          <view class="classify-item" data-event-params="{{itemName.eventParams}}" catchtap="{{itemName.eventHandler}}"><text>{{itemName.text}}</text></view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</template>
+<view class="ele-container">
+  <template is="zcClassify" data="{{data:classify1}}"></template>
+</view><template name="zcMap">
+    <view class="element map" data-event-params="{{data.customFeature.markers_json_str}}" catchtap="tapMapDetail" style="{{data.style}}">
+      <map class="map-module" hidden="{{data.customFeature.type != 'withmap' }}" longitude="{{data.customFeature.lng}}" latitude="{{data.customFeature.lat}}" markers="{{data.customFeature.markers}}" scale="17"></map>
+      <view class="map-link">{{data.content}}</view>
+    </view>
+</template>
+<view class="ele-container">
+    <template is="zcMap" data="{{data:map2}}"></template>
+</view><template name="zcButton">
+  <block wx:if="{{real_value}}">
+    <block wx:if="{{real_value.join !== undefined}}">
+      <label class="element button" style="{{data.style}}" data-event-params="{{data.eventParams}}" catchtap="{{data.eventHandler}}">
+        <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData: real_value}}"/>
+        </view>
+      </label>
+    </block>
+    <block wx:else>
+      <label class="element button" style="{{data.style}}" data-event-params="{{data.eventParams}}" catchtap="{{data.eventHandler}}">
+        {{real_value}}
+      </label>
+    </block>
+  </block>
+  <block wx:else>
+    <label class="element button" style="{{data.style}}" data-event-params="{{data.eventParams}}" catchtap="{{data.eventHandler}}">
+      {{data.content}}
+    </label>
+  </block>
+</template>
+<block wx:if="{{real_value}}">
+  <template is="zcButton" data="{{data:button3}}"></template>
+</block>
+<block wx:elif="{{detail_data && !vessel_page_data.form_data}}">
+  <template is="zcButton" data="{{data:button3}}"></template>
+</block>
+<block wx:elif="{{vessel_page_data.form_data}}">
+  <template is="zcButton" data="{{data:button3}}"></template>
+</block>
+<block wx:else>
+  <template is="zcButton" data="{{data:button3}}"></template>
+</block>
+
+</view>
