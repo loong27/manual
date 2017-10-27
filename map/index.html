@@ -34,7 +34,7 @@ input::-webkit-input-placeholder{
 }
 
 </style>
-<script src="/app/resource/js/lib/jquery-1.11.1.min.js"></script> 
+
     <div class="diy-fixedsearch fixed">
         <div class="background"></div>
         <form action="" method="post" class="inner">
@@ -48,6 +48,7 @@ input::-webkit-input-placeholder{
             </div>
         </form>
     </div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>    
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>  
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hNGh7Ijv4ed9ztF6nUzsbt7sG94hHDSg"></script>
     <script type="text/javascript">
@@ -61,34 +62,13 @@ input::-webkit-input-placeholder{
                 myGeo.getLocation(new BMap.Point(r.point.lng, r.point.lat),           
                         function(rs) {  
                             var addComp = rs.addressComponents;
-                            /*$("#addre").html(addComp.district + addComp.street  
-                                    + addComp.streetNumber);*/
+                            console.log(addComp);
+                            $("#addre").html(addComp.district + addComp.street  
+                                    + addComp.streetNumber);
                         });  
   
             } else {  
                 alert('failed' + this.getStatus());  
             }  
-        });
-        
-        $(function(){
-            $(document).ready(function(){
-                setTimeout(function(){
-                    var latv = $("#lat").val();
-                    var lngv = $("#lng").val();
-                    $.ajax({
-                        url:'/app/index.php?i=89&c=entry&m=ewei_shopv2&do=mobile&r=test2',
-                        type:'post',
-                        dataType:'json',
-                        data:{lat:latv,lng:lngv},
-                        success:function(data){
-                            var str = eval('('+data+')');
-                            $("#addre").html(str.result.formatted_address);
-                        },
-                        error : function() {
-                            document.getElementById("addre").value = "获取定位失败";
-                        }
-                    });
-                    },2000); 
-            });
         });
     </script>
