@@ -1,3 +1,20 @@
+最简版
+$.ajax({
+	url: core.getUrl('goods/package/option',),    //请求的url地址
+	dataType: "json",   //返回格式为json
+	async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+	type: "GET",   //请求方式
+	data:{pid:packageid,goodsid:goodsid},
+	success: function(data) {
+
+	},
+	error: function() {
+		//请求出错处理
+	}
+});
+
+
+
 $.ajax({
                 url: core.getUrl('goods/package/option',{pid:packageid,goodsid:goodsid}),    //请求的url地址
                 dataType: "json",   //返回格式为json
