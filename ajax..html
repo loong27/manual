@@ -1,0 +1,32 @@
+
+<script type="text/javascript">
+    var url = "{php echo webUrl('shop/ceping/ajax')}";
+    var msginfo = $(".msginfo");
+    $("#moreinfo,#end").mouseenter(function(){
+        var id = $(this).attr('data-id');
+        //请求数据
+        $.ajax({
+            url: url,    
+            dataType: "json",   
+            async: true, 
+            type: "post",  
+            data:{id:id},
+            success: function(data) {
+                var obj = data.result;             
+                var str ='';
+                for (var i in obj) {
+                    str= str + '<li><span><b>' + obj[i].title + '</b> : ' +obj[i].value+'</span></li>';
+                 }
+                $('#innertxt').html(str);
+            },
+            error: function() {
+                str = "<div class='panel-body' style='text-align: center;padding:30px;'>数据加载中...</div>"
+                $('#innertxt').html(str);
+            }
+        });
+        msginfo.css('display','block');
+    });
+    $("#moreinfo,#end").mouseleave(function(){
+        msginfo.css('display','none');
+    })
+</script>
