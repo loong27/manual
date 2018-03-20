@@ -1,0 +1,32 @@
+vhost
+
+<VirtualHost *:80> 
+    ServerName www.jlumba.com
+    DocumentRoot "F:/git/jlumba.com/www" 
+     <Directory "F:/git/jlumba.com/www"> 
+     Options FollowSymLinks 
+     AllowOverride All 
+     Require all granted 
+   </Directory>   
+</VirtualHost> 
+
+
+<VirtualHost *:80> 
+    ServerName www.ai.com 
+    DocumentRoot "F:/git/www/public"
+     <Directory "F:/git/www/public"> 
+     Options FollowSymLinks 
+     AllowOverride All 
+     Require all granted 
+   </Directory>   
+</VirtualHost> 
+ 
+httpd
+
+<Directory />
+	 Options FollowSymLinks
+     AllowOverride None
+     Order deny,allow
+     Allow from all
+     Satisfy all
+</Directory>
