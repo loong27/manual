@@ -1,0 +1,495 @@
+<style type="text/css">
+    @charset "utf-8";
+/* CSS Document */
+
+body{ -webkit-font-smoothing: antialiased; }
+.zbox-popup {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    display: none;
+    overflow: hidden;
+    width: 270px;
+    -webkit-transition-property: -webkit-transform,opacity;
+    transition-property: transform,opacity;
+    -webkit-transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1.2) ;
+    transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1.2);
+    text-align: center;
+    opacity: 0;
+    color: #000;
+    border-radius: 3px;
+    z-index: 10000;
+     -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    -o-perspective: 1200px;
+    perspective: 1200px;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
+}
+.zbox-popup.zbox-popup-in {
+    display: block;
+    transition-property: all;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    -webkit-transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1) ;
+    transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1);
+    opacity: 1;
+}
+.zbox-popup-inner {
+    position: relative;
+    padding: 15px;
+    border-radius: 3px 3px 0 0;
+    background: rgba(255,255,255,.95);
+}
+.zbox-popup-inner:after {
+    position: absolute;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    background-color: rgba(0,0,0,.2);
+}
+.zbox-popup-title {
+    font-size:16px;
+    font-weight: 500;
+    text-align: center;
+    color: #4a4a4a;
+}
+.zbox-popup-title+.zbox-popup-text {
+    font-family: inherit;
+    font-size: 16px;
+    margin: 5px 0 0;
+    color: #4a4a4a;
+    line-height: 1.75;
+    overflow: hidden;
+}
+.zbox-popup-buttons {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    height: 44px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.zbox-popup-button {
+    font-size: 14px;
+    line-height: 44px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    padding: 0 5px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:#fd9e09;
+    background: rgba(255,255,255,.95);
+    -webkit-box-flex: 1;
+}
+.zbox-popup-button:first-child:last-child {
+    border-radius: 0 0 3px 3px;
+}
+.zbox-popup-button.zbox-popup-button-bold {
+    font-weight: 600;
+}
+.zbox-popup-button:after {
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    display: block;
+    width: 1px;
+    height: 100%;
+    content: '';
+    -webkit-transform: scaleX(.5);
+    transform: scaleX(.5);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    background-color: rgba(0,0,0,.2);
+}
+.zbox-popup-backdrop.zbox-active {
+    opacity: 1;
+}
+.zbox-popup-backdrop {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    opacity: 0;
+    background: rgba(0,0,0,.4);
+}
+.zbox-toast-container{
+    position:fixed;
+    z-index:9999;
+    top: 100px;
+    width:100%;
+    -webkit-transition:opacity .8s;
+    transition:opacity .8s;
+    opacity:0;
+    left: 0;
+    }
+.zbox-toast-container.zbox-active{opacity:1}
+.zbox-toast-message{
+    font-size:14px;
+    width:270px;
+    margin:5px auto;
+    padding:5px;
+    text-align:center;
+    color:#000;
+    border-radius:5px;
+    background-color:#d8d8d8;
+    }
+    
+
+.zbox-btn-outlined.zbox-btn-blue, .zbox-btn-outlined.zbox-btn-primary {
+    color: #007aff;
+}
+
+.zbox-btn-outlined {
+    background-color: transparent;
+}
+.zbox-btn-blue, .zbox-btn-primary, input[type=submit] {
+    color: #fff;
+    border: 1px solid #007aff;
+    background-color: #007aff;
+}
+.zbox-btn, button, input[type=button], input[type=reset], input[type=submit] {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    cursor: pointer;
+    -webkit-transition: all;
+    transition: all;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    text-align: center;
+    vertical-align: top;
+    white-space: nowrap;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+.zbox-btn {
+    display: block;
+    width: 120px;
+    margin: 10px auto;
+}
+    #zchange{ width:44px; height: 44px; display:block;margin: 0 auto; 
+    animation:circle1 1.2s infinite linear; -webkit-animation:circle1 1.2s infinite linear; transition: all linear;}
+
+@-webkit-keyframes circle1
+{
+0% { -webkit-transform: rotate(0deg)  }
+100% {  -webkit-transform: rotate(360deg)  ;}
+}
+
+@keyframes circle1
+{
+0% { transform: rotate(0deg)  ;}
+100% { transform: rotate(360deg) ;}
+}
+</style>
+<form name="TheForm" action="{:U('Spider/listorder')}" method="post">
+<div class="pad-lr-10">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+            <th width="40">排序</th>
+            <th width="40">id</th>
+            <th width="80">网站域名</th>
+            <th width="80">网站url</th>
+            <th width="100">列表正则</th>
+			<th width="80">标题正则</th>
+			<th width="80">内容正则</th>
+			<th width="30">是否自动发布</th>
+			<th width="220">{:L('manage')}</th>
+            </tr>
+        </thead>
+	<tbody>
+        <tr>
+            <td width="40" align="center"><input name="listorders[1]" type="text" size="3" value="0" class="input-text-c"></td>
+            <td id="ruleid" align="center">1</td>
+            <td id="domain" align="left">http://yz.chsi.com.cn</td>
+            <td id="url" align="left">http://yz.chsi.com.cn/kyzx/kydt/</td>
+            <td align="left">/&lt;div class=\"content-l\".*?&lt;ul class=\"news-list\"&gt;(.*?)&lt;\/ul&gt;/si</td>
+            <td align="left">666</td>
+            <td align="left">/&lt;div class=\"content-l detail\".*?&gt;(.*?)&lt;div class=\"content-r\"&gt;/si</td>
+            <td align="center">
+                        否                        </td>
+            <td align="center">
+            <a id="start">采集</a> | 
+            <a href="/zzadmin.php?m=Spider&amp;a=edit&amp;id=1">修改</a> | <a href="javascript:confirm_delete('/zzadmin.php?m=Spider&amp;a=delete&amp;id=1')">删除</a></td>           
+            </tr>
+                    <tr>
+            <td width="40" align="center"><input name="listorders[2]" type="text" size="3" value="0" class="input-text-c"></td>
+            <td id="ruleid" align="center">2</td>
+            <td id="domain" align="left">http://www.kaoyan.com</td>
+            <td id="url" align="left">http://www.kaoyan.com/zhaosheng/</td>
+            <td align="left">/&lt;div class=\"zsRight\".*?&lt;ul class=\"list areaZslist\"&gt;(.*?)&lt;\/ul&gt;/si</td>
+            <td align="left">666</td>
+            <td align="left">/&lt;div class=\"articleCon\".*?&gt;(.*?)&lt;div class=\"tPage\"&gt;/si</td>
+            <td align="center">
+                        否                        </td>
+            <td align="center">
+            <a id="start">采集</a> | 
+            <a href="/zzadmin.php?m=Spider&amp;a=edit&amp;id=2">修改</a> | <a href="javascript:confirm_delete('/zzadmin.php?m=Spider&amp;a=delete&amp;id=2')">删除</a></td>           
+            </tr>
+                    <tr>
+            <td width="40" align="center"><input name="listorders[3]" type="text" size="3" value="0" class="input-text-c"></td>
+            <td id="ruleid" align="center">3</td>
+            <td id="domain" align="left">http://kaoyan.eol.cn</td>
+            <td id="url" align="left">http://kaoyan.eol.cn/nnews/</td>
+            <td align="left">/&lt;div class=\"page_main\".*?&lt;div class=\"page_left\"&gt;(.*?)&lt;\/div&gt;/si</td>
+            <td align="left">666</td>
+            <td align="left">/&lt;div class=\"TRS_Editor\".*?&gt;(.*?)&lt;div id=\"pagenav\"&gt;/si</td>
+            <td align="center">
+                        否                        </td>
+            <td align="center">
+            <a id="start">采集</a> | 
+            <a href="/zzadmin.php?m=Spider&amp;a=edit&amp;id=3">修改</a> | <a href="javascript:confirm_delete('/zzadmin.php?m=Spider&amp;a=delete&amp;id=3')">删除</a></td>           
+            </tr>
+                    <tr>
+            <td width="40" align="center"><input name="listorders[4]" type="text" size="3" value="0" class="input-text-c"></td>
+            <td id="ruleid" align="center">4</td>
+            <td id="domain" align="left">http://kaoyan.koolearn.com</td>
+            <td id="url" align="left">http://kaoyan.koolearn.com/dongtai/</td>
+            <td align="left">/&lt;div class=\"list01\".*?&lt;ul&gt;(.*?)&lt;\/ul&gt;/si</td>
+            <td align="left">666</td>
+            <td align="left">/&lt;div class=\"mt40\".*?&gt;(.*?)&lt;div class=\"c_keywords\"&gt;/si</td>
+            <td align="center">
+                        否                        </td>
+            <td align="center">
+            <a id="start">采集</a> | 
+            <a href="/zzadmin.php?m=Spider&amp;a=edit&amp;id=4">修改</a> | <a href="javascript:confirm_delete('/zzadmin.php?m=Spider&amp;a=delete&amp;id=4')">删除</a></td>           
+            </tr>
+            
+    </tbody>
+    </table>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script>
+    var id;
+    var url;
+    var spider;
+
+    $("[id = start]").click(function(){
+        id = $(this).parent().parent().children('#ruleid').html();
+        url = $(this).parent().parent().children('#domain').html();
+        $.DialogByZ.Confirm({Title: "提示", Content: url+"<br>请耐心等待!<br/><div>已成功采集:<span id='number'>0</span>篇</div>采集中...<br/><div id='message'></div>",FunL:confirmL,FunR:alerts})
+        $(".zbox-popup-button").css('display','none');
+        $(".R").css('display','block');
+        spider = window.setInterval("start()",1000);
+    })
+
+   function confirmL(){
+        $.DialogByZ.Close();
+        $.DialogByZ.Alert({Title: "提示", Content: "您要求稍后开通",BtnL:"确定"})
+        window.clearInterval(spider);
+   }
+   function alerts(){
+        window.clearInterval(spider);
+        $.DialogByZ.Close();
+        $.ajax({
+            url: "/zzadmin.php?m=Spider&a=recoveryspider",
+            dataType: "json",
+            async: true,
+            type: "post",
+            success: function(data) {
+                console.log(data)
+                if (data.code == 200) {
+                    $.DialogByZ.Autofade({Content: data.msg})
+                }
+            }
+        });         
+   }
+
+   function start(){
+        $.ajax({
+            url: "/zzadmin.php?m=Spider&a=start",
+            dataType: "json",
+            async: true,
+            type: "post",
+            data:{id:id},
+            success: function(data) {
+                console.log(data)
+                var message;
+                if (data.code == 201) {
+                    $.DialogByZ.Close();
+                    $.DialogByZ.Autofade({Content: "采集完成！"})
+                    window.clearInterval(spider);
+                    $.ajax({
+                        url: "/zzadmin.php?m=Spider&a=recoveryspider",
+                        dataType: "json",
+                        async: true,
+                        type: "post",
+                        success: function(data) {
+                            console.log(data)
+                            if (data.code == 200) {
+                                $.DialogByZ.Autofade({Content: data.msg})
+                            }
+                        },
+                        error: function() {
+                            //请求出错处理
+                            $.DialogByZ.Autofade({Content: "系统错误，请稍后再试！"})
+                        }
+                    });
+                }else{
+                    $("#number").html(data.number);
+                    $("#message").html(data.msg);
+                }
+            },
+            error: function() {
+                //请求出错处理
+                $.DialogByZ.Autofade({Content: "系统错误，请稍后再试！"})
+                window.clearInterval(spider);
+            }
+        });         
+   }
+
+</script>
+</div>
+</div>
+</form></div>
+
+<script type="text/javascript">
+/*! zdialog | (c) 2016 | by zcy */
+/**
+ * FunL: 表示左侧按钮的触发事件      
+ * FunR: 代表右侧的触发事件
+ * 默认事件 关闭弹出层
+ * **/
+;(function($,window,document,undefined){
+           //默认参数
+            var PARAMS;
+            var DEFAULTPARAMS = { Title: "标题", Content: "",BtnL:"确定",BtnR:"取消" , FunL: new Object, FunR: new Object };
+            $.DialogByZ = {
+                //弹出提示框
+                Alert: function (params) {
+                    Show(params,"Alert");
+                },
+                //弹出确认框
+                Confirm: function (params) { Show(params,"Confirm"); },
+                //自动显示弹框
+                Autofade: function (params) { Show(params,"Autofade") },
+                //关闭弹出框
+                Close: function () {
+                    $(".zbox-popup,.zbox-popup-backdrop").remove();
+                },
+                //加载图形
+                Loading:function(Url){
+                    loadBox(Url)
+                }
+        
+            };
+                //初始化参数
+            function Init(params) {
+                if (params != undefined && params != null) {
+                    PARAMS = $.extend({},DEFAULTPARAMS, params);
+                }
+            };
+            function loadBox(Url){
+                var url=Url;
+                var dislogContainer=$('<div class="zbox-popup" style="display: block;"><img  id="zchange" src="'+url+'"></div>');
+                var blackFilter=$('<div class="zbox-popup-backdrop" style="display: block;"></div>');
+                setTimeout(function(){
+                         $(".zbox-popup").addClass('zbox-popup-in');
+                         $(".zbox-popup-backdrop").addClass('zbox-active');
+                    },30)
+                //$("body").append(blackFilter);
+                $("body").append(dislogContainer);
+            }
+            function Show(params, caller){
+                  Init(params);
+                  var dislogContainer;
+                  var dialogInner;
+                  var dialogBtn;
+                  var blackFilter=$('<div class="zbox-popup-backdrop" style="display: block;"></div>');
+                  if(caller=='Autofade'){
+                     dislogContainer=$('<div class="zbox-toast-container"><div class="zbox-toast-message">'
+                     +PARAMS.Content+'</div></div>');
+                     $("body").append(dislogContainer);
+                     setTimeout(function(){
+                         $(".zbox-toast-container").addClass('zbox-active');
+                    },30)
+                     setTimeout(function(){
+                          $(".zbox-toast-container").remove();
+                     },3000)
+                  }else{
+                    dislogContainer=$('<div class="zbox-popup" style="display: block;"></div>');
+                    dialogInner=$('<div class="zbox-popup-inner"><div class="zbox-popup-title">'+PARAMS.Title+'</div><div class="zbox-popup-text">'+PARAMS.Content+'</div></div>');
+                    dialogBtn=$('<div class="zbox-popup-buttons"><span class="zbox-popup-button" index="0">'+PARAMS.BtnL+'</span></div>');
+                    if(caller=='Confirm'){
+                        dialogBtn.append($('<span class="zbox-popup-button R" index="1">'+PARAMS.BtnR+'</span>')); 
+                    }
+                    dislogContainer.append(dialogInner);
+                    dislogContainer.append(dialogBtn);
+                    setTimeout(function(){
+                         $(".zbox-popup").addClass('zbox-popup-in');
+                         $(".zbox-popup-backdrop").addClass('zbox-active');
+                    },10)
+                    $("body").append(blackFilter);
+                    $("body").append(dislogContainer);
+                    
+                    $(".zbox-popup-button").click(function(){
+                         var indexs=$(this).attr('index');
+                         if(indexs==0){
+                            //左侧按钮
+                            if($.isFunction(PARAMS.FunL)){
+                                    PARAMS.FunL();
+                            }else{
+                                    $.DialogByZ.Close(); 
+                            }
+                         }else{
+                            //右侧按钮 
+                            if($.isFunction(PARAMS.FunR)){
+                                    PARAMS.FunR();
+                            }else{
+                                    $.DialogByZ.Close(); 
+                            }
+                         }
+                         return false;
+                    })
+                     
+                  }
+                  //      
+            }
+        })(jQuery,window,document);
+</script>
